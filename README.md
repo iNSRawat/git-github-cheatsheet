@@ -15,17 +15,17 @@
 
 ## 📑 Table of Contents
 
-- [Getting Started](#getting-started)
-- [Configuration](#configuration)
-- [Basic Commands](#basic-commands)
-- [Branching & Merging](#branching--merging)
-- [Viewing History](#viewing-history)
-- [Undoing Changes](#undoing-changes)
-- [Stashing](#stashing)
-- [Remote Repositories](#remote-repositories)
-- [Tags & Releases](#tags--releases)
-- [Advanced Commands](#advanced-commands)
-- [GitHub Specific](#github-specific)
+- [Getting Started](#-getting-started)
+- [Configuration](#%EF%B8%8F-configuration)
+- [Basic Commands](#-basic-commands)
+- [Branching & Merging](#-branching--merging)
+- [Viewing History](#-viewing-history)
+- [Undoing Changes](#%EF%B8%8F-undoing-changes)
+- [Stashing](#-stashing)
+- [Remote Repositories](#-remote-repositories)
+- [Tags & Releases](#%EF%B8%8F-tags--releases)
+- [Advanced Commands](#-advanced-commands)
+- [GitHub Specific](#-github-specific)
 
 ---
 
