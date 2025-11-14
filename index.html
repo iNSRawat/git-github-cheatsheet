@@ -300,6 +300,13 @@
                 <li><a href="#basic-commands">💻 Basic Commands</a></li>
                 <li><a href="#branching-merging">🌿 Branching & Merging</a></li>
                                 <li><a href="#remote-repositories">🌐 Remote Repositories</a></li>
+                                <li><a href="#configuration">⚙️ Configuration</a></li>
+                                <li><a href="#viewing-history">📜 Viewing History</a></li>
+                                <li><a href="#undoing-changes">↩️ Undoing Changes</a></li>
+                                <li><a href="#stashing">📦 Stashing</a></li>
+                                <li><a href="#tags-releases">🏷️ Tags & Releases</a></li>
+                                <li><a href="#advanced-commands">🔧 Advanced Commands</a></li>
+                                <li><a href="#github-specific">🐙 GitHub Specific</a></li>
             
             <h3>Initialize a New Repository</h3>
             <div class="code-block">
@@ -358,6 +365,83 @@
 <span class="command">git push -u origin main</span>  <span class="comment"># Push and set upstream</span></code></pre>
             </div>
         </div>
+
+            <!-- Configuration -->
+    <div id="configuration" class="section">
+        <h2>⚙️ Configuration</h2>
+        <div class="code-block">
+            <pre><code><span class="command">git config --global user.name "Your Name"</span>        <span class="comment"># Set username</span>
+<span class="command">git config --global user.email "email@example.com"</span>  <span class="comment"># Set email</span>
+<span class="command">git config --list</span>                                  <span class="comment"># List all settings</span>
+<span class="command">git config user.name</span>                              <span class="comment"># Get specific setting</span></code></pre>
+        </div>
+    </div>
+
+            <!-- Viewing History -->
+    <div id="viewing-history" class="section">
+        <h2>📜 Viewing History</h2>
+        <div class="code-block">
+            <pre><code><span class="command">git log</span>                    <span class="comment"># View commit history</span>
+<span class="command">git log --oneline</span>        <span class="comment"># Condensed history</span>
+<span class="command">git log --graph</span>          <span class="comment"># Visual graph</span>
+<span class="command">git diff</span>                  <span class="comment"># Show changes</span></code></pre>
+        </div>
+    </div>
+
+            <!-- Undoing Changes -->
+    <div id="undoing-changes" class="section">
+        <h2>↩️ Undoing Changes</h2>
+        <div class="code-block">
+            <pre><code><span class="command">git reset HEAD~1</span>        <span class="comment"># Undo last commit</span>
+<span class="command">git reset --hard</span>         <span class="comment"># Discard all changes</span>
+<span class="command">git revert commit-id</span>     <span class="comment"># Revert specific commit</span>
+<span class="command">git checkout -- file</span>     <span class="comment"># Discard file changes</span></code></pre>
+        </div>
+    </div>
+
+    <!-- Stashing -->
+    <div id="stashing" class="section">
+        <h2>📦 Stashing</h2>
+        <div class="code-block">
+            <pre><code><span class="command">git stash</span>                <span class="comment"># Stash changes</span>
+<span class="command">git stash list</span>           <span class="comment"># List stashes</span>
+<span class="command">git stash pop</span>            <span class="comment"># Apply last stash</span>
+<span class="command">git stash drop</span>           <span class="comment"># Delete stash</span></code></pre>
+        </div>
+    </div>
+
+            <!-- Tags & Releases -->
+    <div id="tags-releases" class="section">
+        <h2>🏷️ Tags & Releases</h2>
+        <div class="code-block">
+            <pre><code><span class="command">git tag</span>                  <span class="comment"># List tags</span>
+<span class="command">git tag v1.0.0</span>           <span class="comment"># Create tag</span>
+<span class="command">git push origin v1.0.0</span>   <span class="comment"># Push tag</span>
+<span class="command">git tag -d v1.0.0</span>        <span class="comment"># Delete local tag</span></code></pre>
+        </div>
+    </div>
+
+    <!-- Advanced Commands -->
+    <div id="advanced-commands" class="section">
+        <h2>🔧 Advanced Commands</h2>
+        <div class="code-block">
+            <pre><code><span class="command">git rebase main</span>          <span class="comment"># Rebase onto main</span>
+<span class="command">git cherry-pick commit-id</span>  <span class="comment"># Apply specific commit</span>
+<span class="command">git bisect start</span>         <span class="comment"># Find bug commit</span>
+<span class="command">git reflog</span>               <span class="comment"># Show reference logs</span></code></pre>
+        </div>
+    </div>
+
+    <!-- GitHub Specific -->
+    <div id="github-specific" class="section">
+        <h2>🐙 GitHub Specific</h2>
+        <div class="code-block">
+            <pre><code><span class="command">gh repo create</span>           <span class="comment"># Create repo (CLI)</span>
+<span class="command">gh pr create</span>             <span class="comment"># Create pull request</span>
+<span class="command">gh issue list</span>            <span class="comment"># List issues</span>
+<span class="command">gh workflow run</span>          <span class="comment"># Run GitHub Actions</span></code></pre>
+        </div>
+    </div>
 
         <!-- Footer -->
         <footer>
