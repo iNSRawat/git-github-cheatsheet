@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive Git & GitHub commands reference with examples - Your complete cheatsheet for version control">
+    <meta name="author" content="N S Rawat">
+    <title>🚀 Git & GitHub Commands Cheatsheet | Complete Reference Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --code-bg: #334155;
+            --border-color: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e1b4b 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .header-links a {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .toc h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .toc li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .toc li a:hover {
+            background: var(--code-bg);
+            border-left-color: var(--primary-color);
+            color: var(--text-primary);
+            transform: translateX(5px);
+        }
+
+        /* Section Styles */
+        .section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+        }
+
+        /* Code Block Styles */
+        .code-block {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .command {
+            color: #22d3ee;
+            font-weight: bold;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .toc ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Search Box */
+        .search-box {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--code-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🚀 Git & GitHub Commands Cheatsheet</h1>
+            <p class="subtitle">A comprehensive Git & GitHub commands reference with examples - Your complete cheatsheet for version control</p>
+            <div class="header-links">
+                <a href="https://git-scm.com/doc" target="_blank">📖 Documentation</a>
+                <a href="https://github.com/iNSRawat/git-github-cheatsheet/issues" target="_blank">💡 Contribute</a>
+                <a href="https://github.com/iNSRawat/git-github-cheatsheet" target="_blank">⭐ Star this repo</a>
+            </div>
+        </header>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search commands..." onkeyup="searchCommands()">
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📜 Table of Contents</h2>
+            <ul>
+                <li><a href="#getting-started">🎯 Getting Started</a></li>
+                <li><a href="#configuration">⚙️ Configuration</a></li>
+                <li><a href="#basic-commands">💻 Basic Commands</a></li>
+                <li><a href="#branching-merging">🌿 Branching & Merging</a></li>
+                <li><a href="#viewing-history">📜 Viewing History</a></li>
+                <li><a href="#undoing-changes">↩️ Undoing Changes</a></li>
+                <li><a href="#stashing">📦 Stashing</a></li>
+                <li><a href="#remote-repositories">🌐 Remote Repositories</a></li>
+                <li><a href="#tags-releases">🏷️ Tags & Releases</a></li>
+                <li><a href="#advanced-commands">🔧 Advanced Commands</a></li>
+                <li><a href="#github-specific">🐙 GitHub Specific</a></li>
+            </ul>
+        </div>
+
+        <!-- Getting Started Section -->
+        <div id="getting-started" class="section">
+            <h2>🎯 Getting Started</h2>
+            
+            <h3>Initialize a New Repository</h3>
+            <div class="code-block">
+                <pre><code><span class="command">git init</span>
+<span class="comment"># Initialize a new local git repository</span></code></pre>
+            </div>
+
+            <h3>Clone an Existing Repository</h3>
+            <div class="code-block">
+                <pre><code><span class="command">git clone https://github.com/username/repository.git</span>
+<span class="comment"># Clone via HTTPS</span>
+
+<span class="command">git clone git@github.com:username/repository.git</span>
+<span class="comment"># Clone via SSH</span>
+
+<span class="command">git clone https://github.com/username/repository.git my-folder</span>
+<span class="comment"># Clone into a specific folder</span></code></pre>
+            </div>
+        </div>
+
+        <!-- Basic Commands -->
+        <div id="basic-commands" class="section">
+            <h2>💻 Basic Commands</h2>
+            <div class="code-block">
+                <pre><code><span class="command">git status</span>     <span class="comment"># Check working tree status</span>
+<span class="command">git add .</span>       <span class="comment"># Stage all changes</span>
+<span class="command">git commit -m "message"</span>  <span class="comment"># Commit with message</span>
+<span class="command">git push</span>        <span class="comment"># Push to remote</span>
+<span class="command">git pull</span>        <span class="comment"># Pull from remote</span></code></pre>
+            </div>
+        </div>
+
+        <!-- Branching & Merging -->
+        <div id="branching-merging" class="section">
+            <h2>🌿 Branching & Merging</h2>
+            <div class="code-block">
+                <pre><code><span class="command">git branch</span>           <span class="comment"># List branches</span>
+<span class="command">git branch new-branch</span>   <span class="comment"># Create branch</span>
+<span class="command">git checkout branch-name</span>  <span class="comment"># Switch branch</span>
+<span class="command">git switch branch-name</span>    <span class="comment"># Switch branch (newer)</span>
+<span class="command">git checkout -b new-branch</span>  <span class="command"># Create and switch</span>
+<span class="command">git merge branch-name</span>     <span class="comment"># Merge branch</span>
+<span class="command">git branch -d branch-name</span>  <span class="comment"># Delete branch</span></code></pre>
+            </div>
+        </div>
+
+        <!-- Remote Repositories -->
+        <div id="remote-repositories" class="section">
+            <h2>🌐 Remote Repositories</h2>
+            <div class="code-block">
+                <pre><code><span class="command">git remote -v</span>        <span class="comment"># List remotes</span>
+<span class="command">git remote add origin <url></span>  <span class="comment"># Add remote</span>
+<span class="command">git fetch</span>          <span class="comment"># Fetch changes</span>
+<span class="command">git pull</span>           <span class="comment"># Fetch and merge</span>
+<span class="command">git push</span>           <span class="comment"># Push to remote</span>
+<span class="command">git push -u origin main</span>  <span class="comment"># Push and set upstream</span></code></pre>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <h3>👤 Connect With Me</h3>
+            <p>
+                <a href="https://github.com/iNSRawat" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/insrawat" target="_blank">LinkedIn</a>
+                <a href="https://bio.link/nsrawat" target="_blank">Portfolio</a>
+            </p>
+            <p style="margin-top: 20px;">⭐ If you found this helpful, please <a href="https://github.com/iNSRawat/git-github-cheatsheet" target="_blank">star this repository</a>!</p>
+            <p style="margin-top: 10px; color: var(--text-secondary);">Made with ❤️ by <a href="https://github.com/iNSRawat" target="_blank">N S Rawat</a></p>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <script>
+        // Search Functionality
+        function searchCommands() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const sections = document.getElementsByClassName('section');
+            
+            for (let i = 0; i < sections.length; i++) {
+                const txtValue = sections[i].textContent || sections[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    sections[i].style.display = '';
+                } else {
+                    sections[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Back to Top Button
+        window.onscroll = function() {
+            const backToTop = document.getElementById('backToTop');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
